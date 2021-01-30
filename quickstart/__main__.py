@@ -8,3 +8,9 @@ bucket = s3.Bucket('my-bucket')
 
 # Export the name of the bucket
 pulumi.export('bucket_name', bucket.id)
+
+bucketObject = s3.BucketObject(
+    'index.html',
+    bucket=bucket,
+    content=open('site/index.html').read(),
+    )
